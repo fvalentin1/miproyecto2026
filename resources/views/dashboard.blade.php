@@ -10,6 +10,31 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+
+                    <x-button variant="primary" class="mt-4">
+                        Primary Button
+                    </x-button>
+
+                    <x-button variant="secondary" class="mt-4">
+                        Secondary Button
+                    </x-button>
+
+                    <x-button variant="success" class="mt-4">
+                        Success Button
+                    </x-button>
+
+                    <x-button variant="danger" class="mt-4">
+                        Danger Button
+                    </x-button>
+
+                    <x-button variant="warning" class="mt-4">
+                        Warning Button
+                    </x-button>
+
+                    <x-button variant="info" class="mt-4">
+                        Info Button
+                    </x-button>
+
                 </div>
             </div>
         </div>
