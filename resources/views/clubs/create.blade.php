@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Crear un club</title>
-</head>
+<x-app-layout>
+<x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Clubes de Futbol - Crear') }}
+        </h2>
+    </x-slot>
+
 <body>
-    <h1>Crear un club</h1>
+
     <h2>Ingrese los datos del club a registrar</h2>
 
     @if($errors->any())
@@ -59,8 +58,11 @@
         </div>
 
         <br>
-        <button type="submit">Crear club</button>
+        <x-button variant="primary" type="submit">
+            Crear Club
+        </x-button>
+        {{-- <button type="submit">Crear club</button> --}}
     </form>
 
 </body>
-</html>
+</x-app-layout>

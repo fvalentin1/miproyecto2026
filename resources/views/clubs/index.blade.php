@@ -1,16 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index - Clubes</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Clubes de Futbol') }}
+        </h2>
+    </x-slot>
 
-    <h1>Clubes de futbol:</h1>
+
     <p>
-        <a href="{{ route('clubs.create') }}"> Crear un club</a>
+        <a href="{{ route('clubs.create') }}">
+            <x-button variant="success">Crear un club</x-button>
+        </a>
     </p>
 
     <hr>
@@ -51,8 +50,14 @@
                     <td>{{ $club->founded_year }}</td>
 
                     <td>
-                        <a href="{{ route('clubs.show', $club) }}">Ver Club</a>
-                        <a href="{{ route('clubs.edit', $club) }}">Editar Club</a>
+                        <a href="{{ route('clubs.show', $club) }}">
+                            <x-button variant="info">Ver Club</x-button>
+                        </a>
+
+
+                        <a href="{{ route('clubs.edit', $club) }}">
+                            <x-button variant="warning">Editar Club</x-button>
+                        </a>
 
                         <form action="{{ route('clubs.destroy', $club) }}"
                             method="POST"
@@ -62,7 +67,9 @@
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit">Borrar Club</button>
+                        <x-button variant="danger" type="submit">Borrar Club</x-button>
+
+                        {{-- <button type="submit">Borrar Club</button> --}}
 
                         </form>
 
@@ -83,4 +90,4 @@
 
 </body>
 
-</html>
+</x-app-layout>
