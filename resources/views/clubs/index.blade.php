@@ -196,17 +196,22 @@
 
                         // Botones de exportación
                         layout: {
-                            topStart: {
-                                buttons: [{
-                                    extend: 'excelHtml5',
-                                    text: 'Exportar a Excel',
-                                    className: 'btn-export-excel',
-                                    title: 'Clubes de fútbol',
-                                    exportOptions: {
-                                        columns: ':not(:last-child)'
-                                    }
-                                }]
-                            }
+                            topStart: 'pageLength',
+
+                            topEnd: [
+                                'search',
+                                {
+                                    buttons: [{
+                                        extend: 'excelHtml5',
+                                        text: 'Exportar a Excel',
+                                        className: 'btn-export-excel',
+                                        title: 'Clubes de fútbol',
+                                        exportOptions: {
+                                            columns: ':not(:last-child)'
+                                        }
+                                    }]
+                                }
+                            ]
                         },
                     });
                 }
