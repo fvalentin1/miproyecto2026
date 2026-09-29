@@ -31,6 +31,7 @@
                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" />
                     <x-input-error :messages="$errors->get('name')" class="mt-2" />
                 </div>
+                <div id="qr-reader" class="mt-4 max-w-md"></div>
 
                 <!-- Titles -->
                 <div class="mt-4">
@@ -85,5 +86,25 @@
         </div>
 
     </div>
+
+    @push('styles')
+
+    @endpush
+
+
+    @push('scripts')
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script>
+        const scanner = new Html5QrcodeScanner('qr-reader', {
+            fps: 10,
+            qrbox: { width: 250, height: 250 }
+        });
+
+        scanner.render((decodedText) => {
+            document.getElementById('name').value = decodedText.trim();
+            scanner.clear().catch((error) => console.warn(error));
+        }, () => {});
+    </script>
+@endpush
 
 </x-app-layout>
