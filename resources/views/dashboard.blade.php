@@ -43,6 +43,11 @@
                         <canvas id="clubsChart"></canvas>
                     </div>
 
+                    <a href="{{ route('reports.clubs') }}"
+                    class="inline-block mt-4 px-4 py-2 bg-blue-600 text-white rounded">
+                        Descargar reporte PDF
+                    </a>
+
                 </div>
             </div>
         </div>

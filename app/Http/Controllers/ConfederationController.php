@@ -18,6 +18,27 @@ class ConfederationController extends Controller
         ];
     }
 
+    private function messages(): array
+    {
+        return [
+            'name.required' => 'Debes ingresar el nombre de la confederación.',
+            'name.string' => 'El nombre debe ser un texto.',
+            'name.max' => 'El nombre no puede superar los :max caracteres.',
+
+            'acronym.required' => 'Debes ingresar la sigla de la confederación.',
+            'acronym.string' => 'La sigla debe ser un texto.',
+            'acronym.max' => 'La sigla no puede superar los :max caracteres.',
+
+            'continent.required' => 'Debes ingresar el continente.',
+            'continent.string' => 'El continente debe ser un texto.',
+            'continent.max' => 'El continente no puede superar los :max caracteres.',
+
+            'logo.image' => 'El archivo seleccionado debe ser una imagen.',
+            'logo.mimes' => 'El logo debe ser un archivo PNG, JPG, JPEG o WebP.',
+            'logo.max' => 'El logo no puede superar los 2048 KB.',
+        ];
+    }
+
     public function index()
     {
         $confederations = Confederation::all();
@@ -32,7 +53,8 @@ class ConfederationController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate($this->rules());
+        //$validated = $request->validate($this->rules());
+        $validated = $request->validate($this->rules(), $this->messages());
 
         if ($request->hasFile('logo')) {
             $validated['logo'] = $request->file('logo')->store('logos', 'public');
@@ -55,7 +77,8 @@ class ConfederationController extends Controller
 
     public function update(Request $request, Confederation $confederation)
     {
-        $validated = $request->validate($this->rules());
+        //$validated = $request->validate($this->rules());
+        $validated = $request->validate($this->rules(), $this->messages());
 
         if ($request->hasFile('logo')) {
             if ($confederation->logo) {

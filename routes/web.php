@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ConfederationController;
+use App\Http\Controllers\ReportController;
 
 use App\Models\Club;
 
@@ -26,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('clubs', ClubController::class);
     Route::resource('confederations', ConfederationController::class);
+
+    Route::get('/reports/clubs', [ReportController::class, 'clubs'])->name('reports.clubs');
 });
 
 require __DIR__.'/auth.php';
